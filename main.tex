@@ -318,17 +318,34 @@ Homework I -- Group 016\\
 \begin{enumerate}[leftmargin=\labelsep, label=\textbf{\arabic*.)}]
     \item To compare the performance of a kNN classifier with $k=5$ and a naive Bayes classifier, a 5-fold stratified cross-validation was performed on the on a heart disease dataset:
 
-        \begin{enumerate}[label=\textbf{\alph*.)}]
-            \item aa
-            \item bb
-            \item cc 
-        \end{enumerate}
+          \begin{enumerate}[label=\textbf{\alph*.)}]
+              \item For comparing accuracies of the two classifiers, a box plot was generated for each:
+
+                    \begin{center}
+                        \includegraphics[width=0.8\textwidth]{boxplot_accuracies_unscaled.png}
+                        \captionof{figure}{Boxplot graphs for the accuracies of the kNN and Naive Bayes classifiers, no scaling applied on feature data}
+                    \end{center}
+            
+                \begin{large}
+                MISSING EXPLANATION
+                \end{large}
+                
+              \item However, when choosing to scale the feature data with a Min-Max Scaler, the box plots look as follows:
+
+                    \begin{center}
+                        \includegraphics[width=0.8\textwidth]{boxplot_accuracies_scaled.png}
+                        \captionof{figure}{Boxplot graphs for the accuracies of the kNN and Naive Bayes classifiers, scaling data with Min-Max Scaler}
+                    \end{center}
+
+                    This happens because the kNN classifier, when choosing to scale feature data, stops to consider uniform weights for all neighbors, and instead uses a distance-based weighting system. This change leads to more accurate predictions, as closer neighbors are given more relevance in the classification process. On the other hand, a Bayes classifier is not affected since it does not benefit from the scaling of feature data.
+              \item cc
+          \end{enumerate}
 
     \item Empty
 
-    \item Empty 
+    \item Empty
 
-    \item Empty 
-    
+    \item Empty
+
 \end{enumerate}
 \end{document}
