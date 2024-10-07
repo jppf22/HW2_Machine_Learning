@@ -45,7 +45,7 @@ Homework I -- Group 016\\
                                 \end{array}\]
                         \end{center}
                     \end{minipage}
-                \vspace{0.5em}
+                    \vspace{0.5em}
               \item Nearest Neighbors for each Observation
                     \vspace{0.5em}
                     \begin{itemize}
@@ -58,7 +58,7 @@ Homework I -- Group 016\\
                         \item \( x_7 \rightarrow x_1\text{(P)}, x_2\text{(P)}, x_3\text{(P)}, x_4\text{(P)}, x_8\text{(N)} \)
                         \item \( x_8 \rightarrow x_2\text{(P)}, x_3\text{(P)}, x_5\text{(N)}, x_6\text{(N)}, x_7\text{(N)} \)
                     \end{itemize}
-                \vspace{0.5em}
+                    \vspace{0.5em}
               \item Observation Table \\
                     \vspace{0.5em}
                     \begin{minipage}{1\textwidth}
@@ -76,7 +76,7 @@ Homework I -- Group 016\\
                             \end{array}
                         \]
                     \end{minipage}
-                \vspace{0.5em}
+                    \vspace{0.5em}
               \item Precision, Recall and F1 Calculations
 
                     \[
@@ -95,8 +95,8 @@ Homework I -- Group 016\\
           \vspace{0.5em}
     \item \begin{itemize}
               \item Improving F1-measure by three fold
-                \vspace{0.5em}
-                    
+                    \vspace{0.5em}
+
                     If we consider a kNN with k = 3 and using the Hamming Distance for only the first variable (A/B), we get:
 
                     \vspace{0.5em}
@@ -168,7 +168,7 @@ Homework I -- Group 016\\
                     \]
 
           \end{itemize}
-          
+
     \item \begin{itemize}
               \item Prior Probabilities
 
@@ -260,7 +260,7 @@ Homework I -- Group 016\\
 
                     Since \( P(P \mid y_1 = A, y_2 = 1, y_3 = 0.8) \) \(>\) \( P(N \mid y_1 = A, y_2 = 1, y_3 = 0.8) \), we classify (A, 1, 0.8) as Positive (P).
 
-            \vspace{0.5em}
+                    \vspace{0.5em}
               \item For (B, 1, 1)
                     \[
                         P(P \mid y_1 = B, y_2 = 1, y_3 = 1) = P(P) \cdot p(y_1 = B, y_2 = 1 \mid P) \cdot p(y_3 = 1 \mid P)
@@ -284,7 +284,7 @@ Homework I -- Group 016\\
 
                     Since \( P(P \mid y_1 = B, y_2 = 1, y_3 = 1) \) \(<\) \( P(N \mid y_1 = B, y_2 = 1, y_3 = 1) \), we classify (B, 1, 1) as Negative (N).
 
-            \vspace{0.5em}
+                    \vspace{0.5em}
               \item For (B, 0, 0.9)
                     \[
                         P(P \mid y_1 = B, y_2 = 0, y_3 = 0.9) = P(P) \cdot p(y_1 = B, y_2 = 0 \mid P) \cdot p(y_3 = 0.9 \mid P)
@@ -308,8 +308,8 @@ Homework I -- Group 016\\
 
                     Since \( P(P \mid y_1 = B, y_2 = 0, y_3 = 0.9) \) \(<\) \( P(N \mid y_1 = B, y_2 = 0, y_3 = 0.9) \), we classify (B, 0, 0.9) as Negative (N).
           \end{itemize}
-        \vspace{0.5em}
-        
+          \vspace{0.5em}
+
     \item \begin{itemize}
               \item Total Terms in Classes
 
@@ -451,7 +451,9 @@ Homework I -- Group 016\\
 
                     The performance of the \textit{kNN} is less consistent as the box plot is wider, while the Naive Bayes classifier has a more consistent performance, as the box plot is narrower.
 
-                    This is due to the fact that the \textit{kNN} is non-parametric and therefore is more sensitive across folds, and with non-scaled data, the distance between points is not taken into account, leading to a less accurate and more variable classification, with some classes being more dominant than others, for example.
+                    This is due to the fact that the \textit{kNN} is non-parametric and therefore is more sensitive across folds, and with non-normalized data, different scaled features, redudant, irrelevant or noisy features can affect the performance of the classifier. 
+
+                    The Naive Bayes classifier, on the other hand, is parametric and is not sensitive to these factors.
 
               \item However, when choosing to scale the feature data with a Min-Max Scaler, the box plots look as follows:
 
@@ -460,7 +462,7 @@ Homework I -- Group 016\\
                         \captionof{figure}{Boxplot graphs for the accuracies of the \textit{kNN} and Naive Bayes classifiers, scaling data with Min-Max Scaler}
                     \end{center}
 
-                    This happens because the \textit{kNN} classifier, when choosing to scale feature data, the distance starts becoming relevant and variability is heavily reduced, since no class imposes dominant on others, for example. This leads to a more consistent and accurate classification.
+                    This happens because the \textit{kNN} classifier, when choosing to normalize feature data, it adresses the previously mentioned problems and leads to heavily reduced variability, which in turn leads to a more consistent and accurate classification.
 
                     For \textit{Naive Bayes}, the scaling of the data does not generally affect the performance, since it is a parametric model.
 
@@ -494,20 +496,20 @@ Homework I -- Group 016\\
                         \captionof{figure}{Accuracy plots for the \textit{kNN} classifier with uniform and distance-based weights}
                     \end{center}
 
-              \item Generally, the bigger the value of \textit{k} on a \textit{kNN} classifier, the more accurate the predictions are, until a certain point. This point, for either uniform or distance-based weights, is when the accuracies on both training and testing data is the highest, which seems to be around $k = 20$ for this dataset.
+              \item Generally, the bigger the value of \textit{k} on a \textit{kNN} classifier, the more accurate the predictions are, until a certain point. This point, for either uniform or distance-based weights, is when the accuracies on both training and testing data is the highest, which seems to be around $k = 30$ for this dataset.
 
 
-                    In terms of generalization capabilities, the distance-based weighting system seems to be the more capable of the both, as it is capable of maintaing its accuracy on training data while also improving its accuracy on the testing data.
+                    In terms of generalization capabilities, the distance-based weighting system seems to be more overfitted, with the training accuracy being unchanged and the testing accuracy flatlining. The uniform weighting system, however, seems to be more general, with the training and testing accuracy approaching each other as the number of neighbors increases.
 
                     Before the suggested point, for the uniform weights, the model is overfitting on the training data.
-                    Past $k=30$ both models may be at the risk of underfitting, a phenomenon not observable for the dataset at hand.
+                    Past $k=30$ it may be at the risk of underfitting, a phenomenon not observable for the dataset at hand.
 
           \end{enumerate}
 
     \item Some properties from the dataset that may justify the shortcomings of Naive Bayes classifier on this dataset are:
           \begin{itemize}
               \item Since Naive Bayes assumes that all features are independent, it ignores the relantionships and correlation that these features may have in relation to heart disease diagnosis.
-              \item The dataset has features which are not normally distributed or are not numerical, which is a violation of the Gaussian Naive Bayes conditions. Some of these features include the categorical features, such as $cp$, $fbs$, $resteg$, $exang$ and $slope$, for example.
+              \item The dataset has features which are not normally distributed or are not numerical, which is a violation of the Gaussian Naive Bayes conditions. Some of these features include the categorical features, such as $cp$, $fbs$, $resteg$, $exang$ and $slope$, for example. This leads to incorrect probability calculation, and therefore, incorrect classification.
           \end{itemize}
 
 \end{enumerate}
