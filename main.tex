@@ -170,10 +170,11 @@ Homework I -- Group 016\\
               \item Decision Tree
 
                     Since it is not possible to create any more subsets with a minimum of 4 observations, we can build the tree, taking into account that any ties are resolved by the majority class. \\
-                    \begin{center}
-                        \includegraphics[width=0.8\textwidth]{decision_tree_pen_and_paper.jpg}
-                        \captionof{figure}{Decision tree drawn for the pen and paper exercise 1}
-                    \end{center}
+
+                    % \begin{center}
+                    %    \includegraphics[width=0.8\textwidth]{decision_tree_pen_and_paper.jpg}
+                    %    \captionof{figure}{Decision tree drawn for the pen and paper exercise 1}
+                    %\end{center}
           \end{itemize}
     \item \begin{itemize}
               \item Calculating Confusion Matrix entries
@@ -285,11 +286,6 @@ Homework I -- Group 016\\
 
               \item Histogram
 
-                    \begin{center}
-                        \includegraphics[width=0.8\textwidth]{bin_histogram.jpg}
-                        \captionof{figure}{Histogram of the relative frequencies of the classes in each bin}
-                    \end{center}
-
               \item $n$-ary Root Split Calculation
 
                     To find the $n$-ary root split, the dominant class must be singled out for each bin:
@@ -320,98 +316,19 @@ Homework I -- Group 016\\
 \large{\textbf{Part II}: Programming}\normalsize
 
 \begin{enumerate}[leftmargin=\labelsep, label=\textbf{\arabic*.)}]
-    \item Applying \texttt{f\_classif} from the \texttt{sklearn} library upon the dataset (after splitting into feature data matrix and target vector) allows understanding of the discrimantive power of each feature:
+    \item To compare the performance of a kNN classifier with $k=5$ and a naive Bayes classifier, a 5-fold stratified cross-validation was performed on the on a heart disease dataset:
 
-          \begin{lstlisting}[basicstyle=\ttfamily\centering]
-'Pregnancies': 39.67
-'Glucose': 213.16
-'BloodPressure': 3.26
-'SkinThickness': 4.3
-'Insulin': 13.28
-'BMI': 71.77
-'DiabetesPedigreeFunction': 23.87
-'Age': 46.14
-        \end{lstlisting}
-          The scores indicate that \texttt{Glucose} is the \textbf{most discriminative} feature, whereas \texttt{BloodPressure} is the \textbf{least discriminative}.
+        \begin{enumerate}[label=\textbf{\alph*.)}]
+            \item aa
+            \item bb
+            \item cc 
+        \end{enumerate}
 
-          The following plot shows the class-condition probability density functions for these two features:
+    \item Empty
 
-          \begin{center}
-              \includegraphics{discrimantive_features_dense_probability.png}
-              \captionof{figure}{Class-condition probability density functions for the most and least discriminative features}
-          \end{center}
+    \item Empty 
 
-    \item To measure accuracy levels originated from using a decision tree with the minimums sample split values (2, 5, 10, 20, 30, 50, 100) when branching, a stratified 80-20 training-testing split was performed.
-
-          \begin{center}
-              \includegraphics{split_training_results.png}
-              \captionof{figure}{Accuracy levels for different minimum sample splits}
-          \end{center}
-
-    \item The smaller decision tree minimum splits have the highest accuracy levels on the training set, while having the smaller values on the testing set, which indicates overfitting and poor generalization capabilities for these levels.
-
-          The higher minimum splits lead to increansigly better accuracy values on the testing set, although continuing to decrease the accuracy on the training set, which indicates the model is starting to have better generalization capabilities and less overfitting.
-
-          Out of all the available minimum splits, the best pick would be the one stricking the best balance between overall accuracy and variance), maximizing the first while minimizing the second, which in this case would be 100.
-
-          Ideally with higher minimum sample split values, there would be a value leading high and identical accuracy levels on both sets. However, there could also be underfitted values.
-    \item .
-          \begin{enumerate}[label=\textbf{\roman*.)},leftmargin=0em]
-              \item Using \textit{all} data to train a single decision tree classifier with a maximum depth of 3 leads to the following tree):\\
-                    \begin{center}
-                        \includegraphics{decision_tree_value_counts.png}
-                        \captionof{figure}{Decision tree with values and samples expressed in amount}
-                    \end{center}
-
-                    But with this second view of the same tree, we can more easily understand the probability of each class in each node (\texttt{value} and \texttt{samples} expressed in proportion):
-
-                    \begin{center}
-                        \includegraphics{decision_tree.png}
-                        \captionof{figure}{Decision tree color-coded by class probability and with values and samples expressed in proportion}
-                    \end{center}
-
-                    The \textcolor{orange}{"oranger"} the node, the higher the probability of the class being 0 (eq. non-diabetic), and the \textcolor{blue}{"bluer"} the node, the higher the probability of the class being 1 (eq. diabetic).
-
-              \item Overall, high \texttt{Glucose} and \texttt{BMI} are the most common indicator of diabetes (agreeing with our analysis in \textit{exercise 1}).
-
-                    Following is a thorough analysis of the probability in each conditional association (extracted from the graph):
-
-                    \begin{itemize}
-                        \item $P( \text{\texttt{Diabetes}}) = 0.349$
-                    \end{itemize}
-                    \begin{itemize}
-                        \item $P( \text{\texttt{Diabetes | Glucose $\leq 127.5$}}) = 0.194$:
-                              \begin{itemize}
-                                  \item $P( \text{\texttt{Diabetes | Glucose $\leq 127.5$ \& Age $\leq 28.5$}}) = 0.085$:
-                                        \begin{itemize}
-                                            \item $P( \text{\texttt{Diabetes | Glucose $\leq 127.5$ \& Age $\leq 28.5$ \& BMI $\leq 45.4$}}) = 0.075$
-                                            \item $P( \text{\texttt{Diabetes | Glucose $\leq 127.5$ \& Age $\leq 28.5$ \& BMI $> 45.4$}}) = 0.75$
-                                        \end{itemize}
-                                  \item $P( \text{\texttt{Diabetes | Glucose $\leq 127.5$ \& Age $> 28.5$}}) = 0.332$:
-                                        \begin{itemize}
-                                            \item $P( \text{\texttt{Diabetes | Glucose $\leq 127.5$ \& Age $> 28.5$ \& BMI $\leq 26.35$}}) = 0.049$
-                                            \item $P( \text{\texttt{Diabetes | Glucose $\leq 127.5$ \& Age $> 28.5$ \& BMI $> 26.35$}}) = 0.399$
-                                        \end{itemize}
-                              \end{itemize}
-                    \end{itemize}
-                    \begin{itemize}
-                        \item $P( \text{\texttt{Diabetes | Glucose $> 127.5$}}) = 0.615$:
-                              \begin{itemize}
-                                  \item $P( \text{\texttt{Diabetes | Glucose $> 127.5$ \& BMI $\leq 29.95$}}) = 0.316$:
-                                        \begin{itemize}
-                                            \item $P( \text{\texttt{Diabetes | Glucose $> 127.5$ \& BMI $\leq 29.95$ \& Glucose $\leq 145.5$}}) = 0.146$
-                                            \item $P( \text{\texttt{Diabetes | Glucose $> 127.5$ \& BMI $\leq 29.95$ \& Glucose $> 145.5$}}) = 0.514$
-                                        \end{itemize}
-                                  \item $P( \text{\texttt{Diabetes | Glucose $> 127.5$ \& BMI $> 29.95$}}) = 0.725$:
-                                        \begin{itemize}
-                                            \item $P( \text{\texttt{Diabetes | Glucose $> 127.5$ \& BMI $> 29.95$ \& Glucose $\leq 157.5$}}) = 0.609$
-                                            \item $P( \text{\texttt{Diabetes | Glucose $> 127.5$ \& BMI $> 29.95$ \& Glucose $> 157.5$}}) = 0.87$
-                                        \end{itemize}
-                              \end{itemize}
-                    \end{itemize}
-
-                    From the analysis it is possible to easily understand the likelihood of a new patient, given his retrieved medical data, to have diabetes or not.
-
-          \end{enumerate}
+    \item Empty 
+    
 \end{enumerate}
 \end{document}
