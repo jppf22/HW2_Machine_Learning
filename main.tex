@@ -25,327 +25,466 @@ Homework I -- Group 016\\
 
 \begin{enumerate}[leftmargin=\labelsep, label=\textbf{\arabic*.)}]
     \item \begin{itemize}
-              \item Data Subset for \( y_1 \geq 0.3 \) \\
+              \item Hamming Distance Values \\
                     \vspace{0.5em}
-                    \begin{minipage}{0.30\textwidth}
-                        \begin{itemize}
-                            \item Class A $\rightarrow 3 \ (x_7, x_8, x_{11})$
-                            \item Class B $\rightarrow 2 \ (x_6, x_{12})$
-                            \item Class C $\rightarrow 2 \ (x_9, x_{10})$
-                        \end{itemize}
-                    \end{minipage}
-                    \begin{minipage}{0.45\textwidth}
+                    \begin{minipage}{1\textwidth}
                         \begin{center}
-                            \[\begin{array}{|c|c|c|c|c|c|}
+                            \[\begin{array}{|c|c|c|c|c|c|c|c|c|}
                                     \hline
-                                    D      & y_1  & y_2 & y_3 & y_4 & y_{\text{out}} \\
+                                    d(x_i, x_j) & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & x_7 & x_8 \\
                                     \hline
-                                    x_6    & 0.30 & 0   & 1   & 0   & B              \\
-                                    x_7    & 0.76 & 0   & 1   & 1   & A              \\
-                                    x_8    & 0.86 & 1   & 0   & 0   & A              \\
-                                    x_9    & 0.93 & 0   & 1   & 1   & C              \\
-                                    x_{10} & 0.47 & 0   & 1   & 1   & C              \\
-                                    x_{11} & 0.73 & 1   & 0   & 0   & A              \\
-                                    x_{12} & 0.89 & 1   & 2   & 0   & B              \\
+                                    x_1         & -   & 2   & 1   & 0   & 1   & 1   & 1   & 2   \\
+                                    x_2         & 2   & -   & 1   & 2   & 1   & 1   & 1   & 0   \\
+                                    x_3         & 1   & 1   & -   & 1   & 2   & 2   & 0   & 1   \\
+                                    x_4         & 0   & 2   & 1   & -   & 1   & 1   & 1   & 2   \\
+                                    x_5         & 1   & 1   & 2   & 1   & -   & 0   & 2   & 1   \\
+                                    x_6         & 1   & 1   & 2   & 1   & 0   & -   & 2   & 1   \\
+                                    x_7         & 1   & 1   & 0   & 1   & 2   & 2   & -   & 1   \\
+                                    x_8         & 2   & 0   & 1   & 2   & 1   & 1   & 1   & -   \\
                                     \hline
                                 \end{array}\]
                         \end{center}
                     \end{minipage}
 
-              \item Entropy Calculation for \( H(y_{\text{out}}) \)
-
-                    \[
-                        H(y_{\text{out}}) = -\frac{3}{7} \log_2 \frac{3}{7} - \frac{2}{7} \log_2 \frac{2}{7} - \frac{2}{7} \log_2 \frac{2}{7} = 1.557
-                    \]
-
-              \item Calculating \( H(y_{\text{out}}|y_2) \)
-
-                    \[
-                        H(y_{\text{out}}|y_2) = \frac{4}{7} \times \left( -\frac{1}{4} \log_2 \frac{1}{4} -\frac{1}{4} \log_2 \frac{1}{4} -\frac{1}{2} \log_2 \frac{1}{2}\right) + \frac{3}{7} \times \left( -\frac{2}{3} \log_2 \frac{2}{3} - \frac{1}{3} \log_2 \frac{1}{3} \right) = 1.251
-                    \]
-
-              \item Information Gain for \( y_2 \)
-
-                    \[
-                        IG(y_2) = H(y_{\text{out}}) - H(y_{\text{out}}|y_2) = 1.557 - 1.251 = 0.306
-                    \]
-
-              \item Calculating \( H(y_{\text{out}}|y_3) \)
-
-                    \[
-                        H(y_{\text{out}}|y_3) = \frac{2}{7} \times \left( -1 \log_2 1 \right) + \frac{4}{7} \times \left( -\frac{1}{4} \log_2 \frac{1}{4} -\frac{1}{4} \log_2 \frac{1}{4} - \frac{1}{2} \log_2 \frac{1}{2} \right) + \frac{1}{7} \times \left( -1 \log_2 1 \right) = 0.857
-                    \]
-
-              \item Information Gain for \( y_3 \)
-
-                    \[
-                        IG(y_3) = H(y_{\text{out}}) - H(y_{\text{out}}|y_3) = 1.557 - 0.857 = 0.7
-                    \]
-
-              \item Calculating \( H(y_{\text{out}}|y_4) \)
-
-                    \[
-                        H(y_{\text{out}}|y_4) = \frac{4}{7} \times \left( -\frac{1}{2} \log_2 \frac{1}{2} - \frac{1}{2} \log_2 \frac{1}{2} \right) + \frac{3}{7} \times \left( -\frac{1}{3} \log_2 \frac{1}{3} - \frac{2}{3} \log_2 \frac{2}{3} \right) = 0.965
-                    \]
-
-              \item Information Gain for \( y_4 \)
-
-                    \[
-                        IG(y_4) = H(y_{\text{out}}) - H(y_{\text{out}}|y_4) = 1.557 - 0.965 = 0.592
-                    \]
-
-              \item Information Gain Evaluation
-
-                    Since feature \( y_3 \) has the greatest information gain, it is selected as the splitting criterion.
+              \item Nearest Neighbors for each Observation
 
                     \begin{itemize}
-                        \item \( y_3 = 0 \rightarrow \text{Class A} \)
-                        \item \( y_3 = 1 \rightarrow \text{Class A/B/C} \)
-                        \item \( y_3 = 2 \rightarrow \text{Class B} \)
+                        \item \( x_1 \rightarrow x_3\text{(P)}, x_4\text{(P)}, x_5\text{(N)}, x_6\text{(N)}, x_7\text{(N)} \)
+                        \item \( x_2 \rightarrow x_3\text{(P)}, x_5\text{(N)}, x_6\text{(N)}, x_7\text{(N)}, x_8\text{(N)} \)
+                        \item \( x_3 \rightarrow x_1\text{(P)}, x_2\text{(P)}, x_4\text{(P)}, x_7\text{(N)}, x_8\text{(N)} \)
+                        \item \( x_4 \rightarrow x_1\text{(P)}, x_3\text{(P)}, x_5\text{(N)}, x_6\text{(N)}, x_7\text{(N)} \)
+                        \item \( x_5 \rightarrow x_1\text{(P)}, x_2\text{(P)}, x_4\text{(P)}, x_6\text{(N)}, x_8\text{(N)} \)
+                        \item \( x_6 \rightarrow x_1\text{(P)}, x_2\text{(P)}, x_4\text{(P)}, x_5\text{(N)}, x_8\text{(N)} \)
+                        \item \( x_7 \rightarrow x_1\text{(P)}, x_2\text{(P)}, x_3\text{(P)}, x_4\text{(P)}, x_8\text{(N)} \)
+                        \item \( x_8 \rightarrow x_2\text{(P)}, x_3\text{(P)}, x_5\text{(N)}, x_6\text{(N)}, x_7\text{(N)} \)
                     \end{itemize}
 
-              \item Data Subset for \( y_1 \geq 0.3 \) and \( y_3 = 1 \) \\
+              \item Observation Table \\
                     \vspace{0.5em}
-                    \begin{minipage}{0.30\textwidth}
-                        \begin{itemize}
-                            \item Class A $\rightarrow 1 \ (x_7)$
-                            \item Class B $\rightarrow 1 \ (x_6)$
-                            \item Class C $\rightarrow 2 \ (x_9, x_{10})$
-                        \end{itemize}
-                    \end{minipage}
-                    \begin{minipage}{0.45\textwidth}
+                    \begin{minipage}{1\textwidth}
                         \[
-                            \begin{array}{|c|c|c|c|c|c|}
+                            \begin{array}{|c|c|c|c|c|c|c|c|c|}
                                 \hline
-                                D      & y_1  & y_2 & y_3 & y_4 & y_{\text{out}} \\
+                                obs.          & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & x_7 & x_8 \\
                                 \hline
-                                x_6    & 0.30 & 0   & 1   & 0   & B              \\
-                                x_7    & 0.76 & 0   & 1   & 1   & A              \\
-                                x_9    & 0.93 & 0   & 1   & 1   & C              \\
-                                x_{10} & 0.47 & 0   & 1   & 1   & C              \\
+                                true          & P   & P   & P   & P   & N   & N   & N   & N   \\
+                                (+) neighbors & 2   & 1   & 3   & 2   & 3   & 3   & 4   & 2   \\
+                                (-) neighbors & 3   & 4   & 2   & 3   & 2   & 2   & 1   & 3   \\
+                                predicted     & N   & N   & P   & N   & P   & P   & P   & N   \\
+                                result        & FN  & FN  & TP  & FN  & FP  & FP  & FP  & TN  \\
                                 \hline
                             \end{array}
                         \]
                     \end{minipage}
 
-              \item Entropy Calculation for \( H(y_{\text{out}}) \)
+              \item Precision, Recall and F1 Calculations
 
                     \[
-                        H(y_{\text{out}}) = -\frac{1}{4} \log_2 \frac{1}{4} - \frac{1}{4} \log_2 \frac{1}{4} - \frac{1}{2} \log_2 \frac{1}{2} = 1.500
+                        \text{Precision} = \frac{TP}{TP + FP} = \frac{1}{1 + 3} = 0.25
                     \]
-
-              \item Calculating \( H(y_{\text{out}}|y_2) \)
 
                     \[
-                        H(y_{\text{out}}|y_2) = 1 \times \left( -\frac{1}{4} \log_2 \frac{1}{4} -\frac{1}{4} \log_2 \frac{1}{4} -\frac{1}{2} \log_2 \frac{1}{2}\right) = 1.500
+                        \text{Recall} = \frac{TP}{TP + FN} = \frac{1}{1 + 3} = 0.25
                     \]
-
-              \item Information Gain for \( y_2 \)
 
                     \[
-                        IG(y_2) = H(y_{\text{out}}) - H(y_{\text{out}}|y_2) = 1.500 - 1.500 = 0
+                        F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} = 2 \times \frac{0.25 \times 0.25}{0.25 + 0.25} = \frac{1}{4} = 0.25
                     \]
 
-              \item Calculating \( H(y_{\text{out}}|y_4) \)
-
-                    \[
-                        H(y_{\text{out}}|y_4) = \frac{1}{4} \times \left( - 1 \log_2 1 \right) + \frac{3}{4} \times \left( -\frac{1}{3} \log_2 \frac{1}{3} - \frac{2}{3} \log_2 \frac{2}{3} \right) = 0.689
-                    \]
-
-              \item Information Gain for \( y_4 \)
-
-                    \[
-                        IG(y_4) = H(y_{\text{out}}) - H(y_{\text{out}}|y_4) = 1.500 - 0.689 = 0.811
-                    \]
-
-              \item Information Gain Evaluation
-
-                    Since feature \( y_4 \) has the greatest information gain, it is selected as the splitting criterion.
-
-                    \begin{itemize}
-                        \item \( y_4 = 0 \rightarrow \text{Class B} \)
-                        \item \( y_3 = 1 \rightarrow \text{Class A/C} \)
-                    \end{itemize}
-
-              \item Decision Tree
-
-                    Since it is not possible to create any more subsets with a minimum of 4 observations, we can build the tree, taking into account that any ties are resolved by the majority class. \\
-
-                    % \begin{center}
-                    %    \includegraphics[width=0.8\textwidth]{decision_tree_pen_and_paper.jpg}
-                    %    \captionof{figure}{Decision tree drawn for the pen and paper exercise 1}
-                    %\end{center}
           \end{itemize}
     \item \begin{itemize}
-              \item Calculating Confusion Matrix entries
+              \item Improving F1-measure by three fold
 
-                    $[\text{predicted}, \text{true}] = \text{value}$
+                    If we consider a kNN with k = 3 and using the Hamming Distance for only the first variable (A/B), we get:
+
+                    \vspace{1.5em}
+
+                    \begin{minipage}{1\textwidth}
+                        \begin{center}
+                            \[\begin{array}{|c|c|c|c|c|c|c|c|c|}
+                                    \hline
+                                    d(x_i, x_j) & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & x_7 & x_8 \\
+                                    \hline
+                                    x_1         & -   & 1   & 0   & 0   & 1   & 1   & 0   & 1   \\
+                                    x_2         & 1   & -   & 1   & 1   & 0   & 0   & 1   & 0   \\
+                                    x_3         & 0   & 1   & -   & 0   & 1   & 1   & 0   & 1   \\
+                                    x_4         & 0   & 1   & 0   & -   & 1   & 1   & 0   & 1   \\
+                                    x_5         & 1   & 0   & 1   & 1   & -   & 0   & 1   & 0   \\
+                                    x_6         & 1   & 0   & 1   & 1   & 0   & -   & 1   & 0   \\
+                                    x_7         & 0   & 1   & 0   & 0   & 1   & 1   & -   & 1   \\
+                                    x_8         & 1   & 0   & 1   & 1   & 0   & 0   & 1   & -   \\
+                                    \hline
+                                \end{array}\]
+                        \end{center}
+                    \end{minipage}
+
+                    \vspace{1.5em}
+
                     \begin{itemize}
-                        \item $[A, A] = 2$ \hspace{1cm} $[A, B] = 0$ \hspace{1cm} $[A, C] = 0$
-                        \item $[B, A] = 0$ \hspace{1cm} $[B, B] = 2 + 1 + 1 = 4$ \hspace{1cm} $[B, C] = 0$
-                        \item $[C, A] = 1$ \hspace{1cm} $[C, B] = 0$ \hspace{1cm} $[C, C] = 1 + 2 + 2 = 5$
+                        \item \( x_1 \rightarrow x_3\text{(P)}, x_4\text{(P)}, x_7\text{(N)} \)
+                        \item \( x_2 \rightarrow x_5\text{(N)}, x_6\text{(N)}, x_8\text{(N)} \)
+                        \item \( x_3 \rightarrow x_1\text{(P)}, x_4\text{(P)}, x_7\text{(N)} \)
+                        \item \( x_4 \rightarrow x_1\text{(P)}, x_3\text{(P)}, x_7\text{(N)} \)
+                        \item \( x_5 \rightarrow x_2\text{(P)}, x_6\text{(N)}, x_8\text{(N)} \)
+                        \item \( x_6 \rightarrow x_2\text{(P)}, x_5\text{(N)}, x_8\text{(N)} \)
+                        \item \( x_7 \rightarrow x_1\text{(P)}, x_3\text{(P)}, x_4\text{(P)} \)
+                        \item \( x_8 \rightarrow x_2\text{(P)}, x_5\text{(N)}, x_6\text{(N)} \)
                     \end{itemize}
-              \item Filling in the Matrix
+
+                    \vspace{1.5em}
+
+                    \begin{minipage}{1\textwidth}
+                        \[
+                            \begin{array}{|c|c|c|c|c|c|c|c|c|}
+                                \hline
+                                obs.          & x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & x_7 & x_8 \\
+                                \hline
+                                true          & P   & P   & P   & P   & N   & N   & N   & N   \\
+                                (+) neighbors & 2   & 0   & 2   & 2   & 1   & 1   & 3   & 1   \\
+                                (-) neighbors & 1   & 3   & 1   & 1   & 2   & 2   & 0   & 2   \\
+                                predicted     & P   & N   & P   & P   & N   & N   & P   & N   \\
+                                result        & TP  & FN  & TP  & TP  & TN  & TN  & FP  & TN  \\
+                                \hline
+                            \end{array}
+                        \]
+                    \end{minipage}
+
+                    \vspace{1.5em}
+
+              \item Precision, Recall and F1 Calculations
+
                     \[
-                        \begin{array}{|c|c|c|c|}
-                            \hline
-                            \text{Predicted \textbackslash True} & A & B & C \\
-                            \hline
-                            A                                    & 2 & 0 & 0 \\
-                            \hline
-                            B                                    & 0 & 4 & 0 \\
-                            \hline
-                            C                                    & 1 & 0 & 5 \\
-                            \hline
-                        \end{array}
+                        \text{Precision} = \frac{TP}{TP + FP} = \frac{3}{3 + 1} = 0.75
                     \]
+
+                    \[
+                        \text{Recall} = \frac{TP}{TP + FN} = \frac{3}{3 + 1} = 0.75
+                    \]
+
+                    \[
+                        F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} = 2 \times \frac{0.75 \times 0.75}{0.75 + 0.75} = \frac{3}{4} = 0.75
+                    \]
+
           \end{itemize}
     \item \begin{itemize}
-              \item Class A Calculations
+              \item Prior Probabilities
 
                     \[
-                        \text{Precision}_A = \frac{TP}{TP + FP} = \frac{2}{2 + 0} = 1.0
+                        \text{P(P)} = \frac{5}{9} \quad \quad \quad \text{P(N)} = \frac{4}{9}
+                    \]
+
+              \item Likelihood of $\{y_1, y_2\}$
+
+                    Since $\{y_1\}$ and $\{y_2\}$ are dependant, we calculate the joint possibility for both positive and negative classes.
+
+                    \[
+                        P(y_1 = A, y_2 = 0 | P) = \frac{2}{5} \quad \quad \quad P(y_1 = A, y_2 = 0 | N) = 0
                     \]
 
                     \[
-                        \text{Recall}_A = \frac{TP}{TP + FN} = \frac{2}{2 + 1} = \frac{2}{3}
+                        P(y_1 = A, y_2 = 1 | P) = \frac{1}{5} \quad \quad \quad P(y_1 = A, y_2 = 1 | N) = \frac{1}{4}
                     \]
 
                     \[
-                        F1_A = 2 \times \frac{\text{Precision}_A \times \text{Recall}_A}{\text{Precision}_A + \text{Recall}_A} = 2 \times \frac{1.0 \times \frac{2}{3}}{1.0 + \frac{2}{3}} = \frac{4}{5}
-                    \]
-
-              \item Class B Calculations
-
-                    \[
-                        \text{Precision}_B = \frac{TP}{TP + FP} = \frac{4}{4 + 0} = 1.0
+                        P(y_1 = B, y_2 = 0 | P) = \frac{1}{5} \quad \quad \quad P(y_1 = B, y_2 = 0 | N) = \frac{1}{2}
                     \]
 
                     \[
-                        \text{Recall}_B = \frac{TP}{TP + FN} = \frac{4}{4 + 0} = 1.0
+                        P(y_1 = B, y_2 = 1 | P) = \frac{1}{5} \quad \quad \quad P(y_1 = B, y_2 = 1 | N) = \frac{1}{4}
+                    \]
+
+              \item Likelihood of $\{y_3\}$
+
+                    Assuming $\{y_3\}$ is normally distributed.
+
+                    \[
+                        \mu_P = \frac{1.1+0.8+0.5+0.9+0.8}{5} = 0.82
                     \]
 
                     \[
-                        F1_B = 2 \times \frac{\text{Precision}_B \times \text{Recall}_B}{\text{Precision}_B + \text{Recall}_B} = 2 \times \frac{1.0 \times 1.0}{1.0 + 1.0} = 1.0
-                    \]
-
-              \item Class C Calculations
-
-                    \[
-                        \text{Precision}_C = \frac{TP}{TP + FP} = \frac{5}{5 + 1} = \frac{5}{6}
+                        \sigma_P^2 = \frac{(1.1-0.82)^2 + (0.8-0.82)^2 + (0.5-0.82)^2 + (0.9-0.82)^2 + (0.8-0.82)^2}{5} = 0.0376
                     \]
 
                     \[
-                        \text{Recall}_C = \frac{TP}{TP + FN} = \frac{5}{5 + 0} = 1.0
+                        y_3 | P \sim N(0.82, 0.0376)
                     \]
 
                     \[
-                        F1_C = 2 \times \frac{\text{Precision}_C \times \text{Recall}_C}{\text{Precision}_C + \text{Recall}_C} = 2 \times \frac{\frac{5}{6} \times 1.0}{\frac{5}{6} + 1.0} = \frac{10}{11}
+                        \mu_N = \frac{1+0.9+1.2+0.9}{4} = 1.0
                     \]
 
-              \item Conclusion
+                    \[
+                        \sigma_N^2 = \frac{(1-1.0)^2 + (0.9-1.0)^2 + (1.2-1.0)^2 + (0.9-1.0)^2}{4} = 0.015
+                    \]
 
-                    The Class with the lowest training F1 score is \textbf{Class A}.
+                    \[
+                        y_3 | N \sim N(1.0, 0.015)
+                    \]
+
+              \item Bayesian Classifier
+
+                    \[
+                        P(y_3 = x | P) = \frac{1}{\sqrt{2\pi \cdot 0.0376}} e^{\frac{-1}{2} \cdot (\frac{(x - 0.82)^2}{0.0376})}
+                    \]
+
+                    \[
+                        P(y_3 = x | N) = \frac{1}{\sqrt{2\pi \cdot 0.015}} e^{\frac{-1}{2} \cdot (\frac{(x - 1)^2}{0.015})}
+                    \]
+
           \end{itemize}
+
     \item \begin{itemize}
-              \item Bin Creation
-
-                    \begin{itemize}
-                        \item Bin 1: $[0, 0.2[$
-                        \item Bin 2: $[0.2, 0.4[$
-                        \item Bin 3: $[0.4, 0.6[$
-                        \item Bin 4: $[0.6, 0.8[$
-                        \item Bin 5: $[0.8, 1]$
-                    \end{itemize}
-
-              \item Placement of $y_1$ values in respective bins
-
-                    \begin{itemize}
-                        \item Bin 1: Class A = 0, Class B = 1 (0.06), Class C = 2 (0.16, 0.01)
-                        \item Bin 2: Class A = 0, Class B = 2 (0.21, 0.30), Class C = 1 (0.22)
-                        \item Bin 3: Class A = 0 , Class B = 0, Class C = 1 (0.47)
-                        \item Bin 4: Class A = 2 (0.73, 0.76), Class B = 0, Class C = 0
-                        \item Bin 5: Class A = 1 (0.86), Class B = 1 (0.89), Class C = 1 (0.93)
-                    \end{itemize}
-
-              \item Relative Frequencies Calculation
-
+              \item For (A, 1, 0.8)
                     \[
-                        \begin{array}{|c|c|c|c|}
-                            \hline
-                            \text{Bin}   & \text{Class A} & \text{Class B} & \text{Class C} \\
-                            \hline
-                            \text{Bin 1} & 0              & 0.25           & 0.40           \\
-                            \text{Bin 2} & 0              & 0.50           & 0.20           \\
-                            \text{Bin 3} & 0              & 0              & 0.20           \\
-                            \text{Bin 4} & 0.667          & 0              & 0              \\
-                            \text{Bin 5} & 0.333          & 0.25           & 0.20           \\
-                            \hline
-                        \end{array}
+                        P(P \mid y_1 = A, y_2 = 1, y_3 = 0.8) = P(P) \cdot p(y_1 = A, y_2 = 1 \mid P) \cdot p(y_3 = 0.8 \mid P)
+                    \]
+                    \[
+                        = \frac{5}{9} \cdot \frac{1}{5} \cdot 2.0465 = 0.227
                     \]
 
-              \item Histogram
+                    \[
+                        P(N \mid y_1 = A, y_2 = 1, y_3 = 0.8) = P(N) \cdot p(y_1 = A, y_2 = 1 \mid N) \cdot p(y_3 = 0.8 \mid N)
+                    \]
+                    \[
+                        = \frac{4}{9} \cdot \frac{1}{4} \cdot 0.8586 = 0.095
+                    \]
 
-              \item $n$-ary Root Split Calculation
+                    Since \( P(P \mid y_1 = A, y_2 = 1, y_3 = 0.8) \) \(>\) \( P(N \mid y_1 = A, y_2 = 1, y_3 = 0.8) \), we classify (A, 1, 0.8) as Positive (P).
 
-                    To find the $n$-ary root split, the dominant class must be singled out for each bin:
+              \item For (B, 1, 1)
+                    \[
+                        P(P \mid y_1 = B, y_2 = 1, y_3 = 1) = P(P) \cdot p(y_1 = B, y_2 = 1 \mid P) \cdot p(y_3 = 1 \mid P)
+                    \]
+                    \[
+                        = \frac{5}{9} \cdot \frac{1}{5} \cdot 1.337 = 0.1486
+                    \]
+
+                    \[
+                        P(N \mid y_1 = B, y_2 = 1, y_3 = 1) = P(N) \cdot p(y_1 = B, y_2 = 1 \mid N) \cdot p(y_3 = 1 \mid N)
+                    \]
+                    \[
+                        = \frac{4}{9} \cdot \frac{1}{4} \cdot 3.257 = 0.3619
+                    \]
+
+                    Since \( P(P \mid y_1 = B, y_2 = 1, y_3 = 1) \) \(<\) \( P(N \mid y_1 = B, y_2 = 1, y_3 = 1) \), we classify (B, 1, 1) as Negative (N).
+
+              \item For (B, 0, 0.9)
+                    \[
+                        P(P \mid y_1 = B, y_2 = 0, y_3 = 0.9) = P(P) \cdot p(y_1 = B, y_2 = 0 \mid P) \cdot p(y_3 = 0.9 \mid P)
+                    \]
+                    \[
+                        = \frac{5}{9} \cdot \frac{1}{5} \cdot 1.8895 = 0.2099
+                    \]
+
+                    \[
+                        P(N \mid y_1 = B, y_2 = 0, y_3 = 0.9) = P(N) \cdot p(y_1 = B, y_2 = 0 \mid N) \cdot p(y_3 = 0.9 \mid N)
+                    \]
+                    \[
+                        = \frac{4}{9} \cdot \frac{1}{2} \cdot 2.333 = 0.518
+                    \]
+
+                    Since \( P(P \mid y_1 = B, y_2 = 0, y_3 = 0.9) \) \(<\) \( P(N \mid y_1 = B, y_2 = 0, y_3 = 0.9) \), we classify (B, 0, 0.9) as Negative (N).
+          \end{itemize}
+
+    \item \begin{itemize}
+              \item Total Terms in Classes
 
                     \begin{itemize}
-                        \item Bin 1: Dominant Class C (0.40)
-                        \item Bin 2: Dominant Class B (0.50)
-                        \item Bin 3: Dominant Class C (0.20)
-                        \item Bin 4: Dominant Class A (0.667)
-                        \item Bin 5: Class A is also present (0.333)
+                        \item \( Amazing \rightarrow 1\)
+                        \item \( run \rightarrow 1\)
+                        \item \( I \rightarrow 1\)
+                        \item \( like \rightarrow 1\)
+                        \item \( it \rightarrow 1\)
                     \end{itemize}
 
-              \item Conclusion
-
-                    The \( n \)-ary root split can be defined based on the dominant classes:
+                    \[
+                        N_P = 1 + 1 + 1 + 1 + 1 = 5
+                    \]
 
                     \begin{itemize}
-                        \item The first split could occur at Bin 1 with Class C.
-                        \item The second split could occur at Bin 2 with Class B.
-                        \item Subsequent splits would be based on the observed distributions in the remaining bins, particularly focusing on Class A’s dominance in Bin 4.
+                        \item \( Too \rightarrow 1\)
+                        \item \( tired \rightarrow 1\)
+                        \item \( Bad \rightarrow 1\)
+                        \item \( run \rightarrow 1\)
                     \end{itemize}
 
-                    The decision tree's splits will optimize for maximum information gain based on these empirical distributions.
+                    \[
+                        N_N = 1 + 1 + 1 + 1 = 4
+                    \]
+
+                    \begin{itemize}
+                        \item \( Amazing \rightarrow 1\)
+                        \item \( run \rightarrow 2\)
+                        \item \( I \rightarrow 1\)
+                        \item \( like \rightarrow 1\)
+                        \item \( it \rightarrow 1\)
+                        \item \( Too \rightarrow 1\)
+                        \item \( tired \rightarrow 1\)
+                        \item \( Bad \rightarrow 1\)
+                    \end{itemize}
+
+                    \[
+                        N_N = 8
+                    \]
+
+              \item Likelihoods Calculations
+
+                    Using the formula:
+                    \[
+                        p(t_i \mid c) = \frac{freq(t_i) + 1}{N_c + V}
+                    \]
+
+                    \textbf{Positive Class (P):}
+
+                    Term: "I":
+                    \[
+                        p("I" \mid P) = \frac{1 + 1}{5 + 8} = \frac{2}{13}
+                    \]
+
+                    Term: "like":
+                    \[
+                        p("like" \mid P) = \frac{1 + 1}{5 + 8} = \frac{2}{13}
+                    \]
+
+                    Term: "to":
+                    \[
+                        p("to" \mid P) = \frac{0 + 1}{5 + 8} = \frac{1}{13}
+                    \]
+
+                    Term: "run":
+                    \[
+                        p("run" \mid P) = \frac{1 + 1}{5 + 8} = \frac{2}{13}
+                    \]
+
+                    \textbf{Negative Class (N):}
+
+                    Term: "I":
+                    \[
+                        p("I" \mid N) = \frac{0 + 1}{4 + 8} = \frac{1}{12}
+                    \]
+
+                    Term: "like":
+                    \[
+                        p("like" \mid N) = \frac{0 + 1}{4 + 8} = \frac{1}{12}
+                    \]
+
+                    Term: "to":
+                    \[
+                        p("to" \mid N) = \frac{0 + 1}{4 + 8} = \frac{1}{12}
+                    \]
+
+                    Term: "run":
+                    \[
+                        p("run" \mid N) = \frac{1 + 1}{4 + 8} = \frac{2}{12} = \frac{1}{6}
+                    \]
+
+              \item Classifying "I like to run"
+
+                    \textbf{Prior Probabilities:}
+                    \[
+                        P(P) = P(N) = \frac{1}{2}
+                    \]
+
+                    \textbf{For Positive Class (P):}
+                    \[
+                        P(P \mid "I like to run") = P(P) \cdot p("I" \mid P) \cdot p("like" \mid P) \cdot p("to" \mid P) \cdot p("run" \mid P)
+                    \]
+                    \[
+                        = \frac{1}{2} \cdot \frac{2}{13} \cdot \frac{2}{13} \cdot \frac{1}{13} \cdot \frac{2}{13}
+                    \]
+                    \[
+                        = \frac{1}{2} \cdot \frac{8}{28561} = \frac{4}{28561} \approx 0.00014
+                    \]
+
+                    \textbf{For Negative Class (N):}
+                    \[
+                        P(N \mid "I like to run") = P(N) \cdot p("I" \mid N) \cdot p("like" \mid N) \cdot p("to" \mid N) \cdot p("run" \mid N)
+                    \]
+                    \[
+                        = \frac{1}{2} \cdot \frac{1}{12} \cdot \frac{1}{12} \cdot \frac{1}{12} \cdot \frac{1}{6}
+                    \]
+                    \[
+                        = \frac{1}{2} \cdot \frac{1}{20736} = \frac{1}{20736} \approx 0.000048
+                    \]
+
+                    \textbf{Conclusion:}
+                    Since \( P(P \mid "I like to run") \) \(>\) \( P(N \mid "I like to run") \), we classify the sentence "I like to run" as Positive (P).
 
           \end{itemize}
 \end{enumerate}
-
 \large{\textbf{Part II}: Programming}\normalsize
 
 \begin{enumerate}[leftmargin=\labelsep, label=\textbf{\arabic*.)}]
-    \item To compare the performance of a kNN classifier with $k=5$ and a naive Bayes classifier, a 5-fold stratified cross-validation was performed on the on a heart disease dataset:
+    \item To compare the performance of a \textit{kNN} classifier with $k=5$ and a naive Bayes classifier, a 5-fold stratified cross-validation was performed on the on a heart disease dataset:
 
           \begin{enumerate}[label=\textbf{\alph*.)}]
               \item For comparing accuracies of the two classifiers, a box plot was generated for each:
 
                     \begin{center}
                         \includegraphics[width=0.8\textwidth]{boxplot_accuracies_unscaled.png}
-                        \captionof{figure}{Boxplot graphs for the accuracies of the kNN and Naive Bayes classifiers, no scaling applied on feature data}
+                        \captionof{figure}{Boxplot graphs for the accuracies of the \textit{kNN} and Naive Bayes classifiers, no scaling applied on feature data}
                     \end{center}
-            
-                \begin{large}
-                MISSING EXPLANATION
-                \end{large}
-                
+
+                    The performance of the \textit{kNN} is less consistent as the box plot is wider, while the Naive Bayes classifier has a more consistent performance, as the box plot is narrower.
+
+                    This is due to the fact that the \textit{kNN} is non-parametric and therefore is more sensitive across folds, and with non-scaled data, the distance between points is not taken into account, leading to a less accurate and more variable classification, with some classes being more dominant than others, for example.
+
               \item However, when choosing to scale the feature data with a Min-Max Scaler, the box plots look as follows:
 
                     \begin{center}
                         \includegraphics[width=0.8\textwidth]{boxplot_accuracies_scaled.png}
-                        \captionof{figure}{Boxplot graphs for the accuracies of the kNN and Naive Bayes classifiers, scaling data with Min-Max Scaler}
+                        \captionof{figure}{Boxplot graphs for the accuracies of the \textit{kNN} and Naive Bayes classifiers, scaling data with Min-Max Scaler}
                     \end{center}
 
-                    This happens because the kNN classifier, when choosing to scale feature data, stops to consider uniform weights for all neighbors, and instead uses a distance-based weighting system. This change leads to more accurate predictions, as closer neighbors are given more relevance in the classification process. On the other hand, a Bayes classifier is not affected since it does not benefit from the scaling of feature data.
-              \item cc
+                    This happens because the \textit{kNN} classifier, when choosing to scale feature data, the distance starts becoming relevant and variability is heavily reduced, since no class imposes dominant on others, for example. This leads to a more consistent and accurate classification.
+
+                    For \textit{Naive Bayes}, the scaling of the data does not generally affect the performance, since it is a parametric model.
+
+              \item Perfoming a paired t-test on the accuracies of the two classifiers, using \texttt{scipy}'s method \texttt{ttest\_rel} that considers $H_0$ to be the hypothesis that the two classifiers have the same stastical significance regarding accuracy, and $H_1$ to be the hypothesis that \textit{kNN} is more accurate than Naive Bayes, the results are as follows:
+
+                    \begin{itemize}
+                        \item When not scaling feature data: $P\text{-value} = 0.998415501126768$
+                              \begin{itemize}
+                                  \item Considering a $1\%$ threshold, \textit{kNN} is not statistically superior than Bayes
+                                  \item Considering a $5\%$ threshold, \textit{kNN} is not statistically superior than Bayes
+                                  \item Considering a $10\%$ threshold, \textit{kNN} is not statistically superior than Bayes
+                              \end{itemize}
+                        \item When min-max scaling feature data: $P\text{-value} = 0.7532332545792753$
+                              \begin{itemize}
+                                  \item Considering a $1\%$ threshold, \textit{kNN} is not statistically superior than Bayes
+                                  \item Considering a $5\%$ threshold, \textit{kNN} is not statistically superior than Bayes
+                                  \item Considering a $10\%$ threshold, \textit{kNN} is not statistically superior than Bayes
+                              \end{itemize}
+                    \end{itemize}
+
+                    We can therefore easily conclude that the hypothesis "the \textit{kNN} model is statistically superior to
+                    naïve Bayes regarding accuracy" is \textbf{false / rejected}.
+          \end{enumerate}
+    \item To compare the performance of uniform and distance-based weights \textit{kNN} classifiers with varying amounts of neighbors (\textit{k}) used in classifications, a 80-20 train-test split was performed for each combination:
+
+          \begin{enumerate}[label=\textbf{\alph*.)}]
+              \item The following plots showcase the obtained results:
+
+                    \begin{center}
+                        \includegraphics[width=0.8\textwidth]{kNN_accuracies.png}
+                        \captionof{figure}{Accuracy plots for the \textit{kNN} classifier with uniform and distance-based weights}
+                    \end{center}
+
+              \item Generally, the bigger the value of \textit{k} on a \textit{kNN} classifier, the more accurate the predictions are, until a certain point. This point, for either uniform or distance-based weights, is when the accuracies on both training and testing data is the highest, which seems to be around $k = 20$ for this dataset.
+
+
+                    In terms of generalization capabilities, the distance-based weighting system seems to be the more capable of the both, as it is capable of maintaing its accuracy on training data while also improving its accuracy on the testing data.
+
+                    Before the suggested point, for the uniform weights, the model is overfitting on the training data.
+                    Past $k=30$ both models may be at the risk of underfitting, a phenomenon not observable for the dataset at hand.
+
           \end{enumerate}
 
-    \item Empty
-
-    \item Empty
-
-    \item Empty
+    \item Some properties from the dataset that may justify the shortcomings of Naive Bayes classifier on this dataset are:
+          \begin{itemize}
+              \item Since Naive Bayes assumes that all features are independent, it ignores the relantionships and correlation that these features may have in relation to heart disease diagnosis.
+              \item The dataset has features which are not normally distributed or are not numerical, which is a violation of the Gaussian Naive Bayes conditions. Some of these features include the categorical features, such as $cp$, $fbs$, $resteg$, $exang$ and $slope$, for example.
+          \end{itemize}
 
 \end{enumerate}
 \end{document}
